@@ -39,14 +39,30 @@ packer.init({
 
 return packer.startup(function(use)
 	use { "wbthomason/packer.nvim" }
-	
-	if PACKER_BOOTSTRAP then
+
+    if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 
+
+	use { "nvim-tree/nvim-web-devicons" }
+	use { "neovim/nvim-lspconfig" }
 	use { "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }
+	use {
+	  "nvim-lualine/lualine.nvim",
+	  requires = { "nvim-tree/nvim-web-devicons", opt = true }
+	}
 	use { "rose-pine/neovim", as = "rose-pine" }
-	use { "nvim-lua/plenary.nvim" } 	
-	use { "ThePrimeagen/harpoon", branch = "harpoon2", requires = { {"nvim-lua/plenary.nvim"} } }
+	use { "nvim-lua/plenary.nvim" }
+	use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 	use { "numToStr/Comment.nvim" }
+	use { "nvimtools/none-ls.nvim" }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate"
+    }
 end)
