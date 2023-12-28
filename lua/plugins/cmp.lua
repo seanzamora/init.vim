@@ -7,8 +7,11 @@ cmp.setup({
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Esc>'] = cmp.mapping({
+            i = cmp.mapping.abort({ behavior = 'insert' }),
+            c = cmp.mapping.close({ behavior = 'insert' }),
+        }),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-        ['<Esc>'] = cmp.mapping.abort(),
         ['<Up>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
         ['<Down>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
         ['<C-p>'] = cmp.mapping(function()
