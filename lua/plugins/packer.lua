@@ -45,7 +45,6 @@ return packer.startup(function(use)
     end
 
     -- LSP & Autocomplete
-   
     use { "neovim/nvim-lspconfig" }
     use { "simrat39/inlay-hints.nvim" }
 
@@ -61,7 +60,7 @@ return packer.startup(function(use)
 
     use { "L3MON4D3/LuaSnip" }
     use { "rafamadriz/friendly-snippets" }
-    use { "VonHeikemen/lsp-zero.nvim" , branch = "v3.x", requires ={"neovim/nvim-lspconfig"} }
+    use { "VonHeikemen/lsp-zero.nvim", branch = "v3.x", requires = { "neovim/nvim-lspconfig" } }
     use { "lvimuser/lsp-inlayhints.nvim" }
     use { "simrat39/rust-tools.nvim" }
     use { "mfussenegger/nvim-dap" }
@@ -77,4 +76,5 @@ return packer.startup(function(use)
     use { "ThePrimeagen/harpoon", branch = "harpoon2", requires = { { "nvim-lua/plenary.nvim" } } }
     use { "numToStr/Comment.nvim" }
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    use { "tpope/vim-fugitive" }
 end)

@@ -13,7 +13,6 @@ local lsp_format_on_save = function(bufnr)
     })
 end
 
-
 lsp.on_attach(function(_, bufnr)
     lsp_format_on_save(bufnr)
 
@@ -114,5 +113,22 @@ lspconfig.gopls.setup({
         },
     },
 })
+
+lspconfig.tailwindcss.setup({
+    settings = {
+        classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+        lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning"
+        },
+        validate = true
+    }
+})
+
 
 require("mason").setup()
