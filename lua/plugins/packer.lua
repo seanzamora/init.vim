@@ -65,6 +65,8 @@ return packer.startup(function(use)
     use { "simrat39/rust-tools.nvim" }
     use { "mfussenegger/nvim-dap" }
 
+
+
     -- Visual
     use { "nvim-tree/nvim-web-devicons" }
     use { "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }
@@ -77,4 +79,5 @@ return packer.startup(function(use)
     use { "numToStr/Comment.nvim" }
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use { "tpope/vim-fugitive" }
+    use { "nvim-telescope/telescope.nvim" }
 end)

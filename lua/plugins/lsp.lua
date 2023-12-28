@@ -115,6 +115,13 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.tailwindcss.setup({
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.g.inlay_hint_visible = true
+            vim.lsp.inlay_hint(bufnr, true)
+            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+        end
+    end,
     settings = {
         classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
         lint = {
@@ -127,7 +134,8 @@ lspconfig.tailwindcss.setup({
             recommendedVariantOrder = "warning"
         },
         validate = true
-    }
+    },
+    capabilities = lsp_capabilities
 })
 
 
