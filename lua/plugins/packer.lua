@@ -44,7 +44,7 @@ return packer.startup(function(use)
 		require("packer").sync()
 	end
 
-    -- LSP Autocomplete
+    -- LSP & Autocomplete
     use { "neovim/nvim-lspconfig" }
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
@@ -73,5 +73,4 @@ return packer.startup(function(use)
 	use { "ThePrimeagen/harpoon", branch = "harpoon2", requires = { {"nvim-lua/plenary.nvim"} } }
     use { "numToStr/Comment.nvim" }
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-
 end)
