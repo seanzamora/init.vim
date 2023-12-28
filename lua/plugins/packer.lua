@@ -64,7 +64,7 @@ return packer.startup(function(use)
     use { "lvimuser/lsp-inlayhints.nvim" }
     use { "simrat39/rust-tools.nvim" }
     use { "mfussenegger/nvim-dap" }
-
+    use { "glepnir/lspsaga.nvim", after = 'nvim-lspconfig', config = function() require('lspsaga').setup({}) end }
 
 
     -- Visual
