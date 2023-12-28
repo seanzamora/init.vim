@@ -6,5 +6,3 @@ require("plugins.comment")
 require("plugins.lualine")
 require("plugins.lsp")
 require("plugins.cmp")
-require("mason").setup()
-

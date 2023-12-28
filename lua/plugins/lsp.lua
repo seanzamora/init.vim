@@ -1,5 +1,41 @@
-local lspconfig = require('lspconfig')
 local lsp = require('lsp-zero')
+
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+local lsp_format_on_save = function(bufnr)
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format()
+        end,
+    })
+end
+
+
+lsp.on_attach(function(_, bufnr)
+    lsp_format_on_save(bufnr)
+
+    local opts = { buffer = bufnr, remap = false }
+
+    -- Keymap Reassign
+    vim.keymap.set({ 'n', 'v' }, "<C-f>", function() vim.lsp.buf.format() end)
+    vim.keymap.set({ 'n', 'v' }, "<A-CR>", function() vim.lsp.buf.code_action() end)
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp.setup()
+
+local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.lua_ls.setup({
@@ -79,13 +115,4 @@ lspconfig.gopls.setup({
     },
 })
 
-lsp.setup()
-
--- Keymap Reassign
-vim.keymap.set({ 'n', 'v' }, "<C-f>", function()
-    vim.lsp.buf.format()
-end)
-
-vim.keymap.set({ 'n', 'v' }, "<A-CR>", function()
-    vim.lsp.buf.code_action()
-end)
+require("mason").setup()
