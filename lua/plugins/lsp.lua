@@ -1,6 +1,8 @@
+local lspconfig = require('lspconfig')
 local lsp = require('lsp-zero')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lsp.configure('lua_ls', {
+lspconfig.lua_ls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
@@ -17,31 +19,11 @@ lsp.configure('lua_ls', {
                 enable = true,
             }
         }
-    }
-})
-
-lsp.configure('gopls', {
-    on_attach = function(client, bufnr)
-        if client.server_capabilities.inlayHintProvider then
-            vim.g.inlay_hint_visible = true
-            vim.lsp.inlay_hint(bufnr, true)
-            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
-        end
-    end,
-    settings = {
-        hints = {
-            assignVariableTypes = true,
-            compositeLiteralFields = true,
-            compositeLiteralTypes = true,
-            constantValues = true,
-            functionTypeParameters = true,
-            parameterNames = true,
-            rangeVariableTypes = true,
-        },
     },
+    capabilities = lsp_capabilities
 })
 
-lsp.configure('tsserver', {
+lspconfig.tsserver.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
@@ -72,7 +54,29 @@ lsp.configure('tsserver', {
                 includeInlayVariableTypeHints = true,
             },
         },
-    }
+    },
+    capabilities = lsp_capabilities
+})
+
+lspconfig.gopls.setup({
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.g.inlay_hint_visible = true
+            vim.lsp.inlay_hint(bufnr, true)
+            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+        end
+    end,
+    settings = {
+        hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+        },
+    },
 })
 
 lsp.setup()

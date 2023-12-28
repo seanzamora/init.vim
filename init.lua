@@ -10,6 +10,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.wo.relativenumber = true
+vim.opt.scrolloff = 5
+
+
 vim.keymap.set("n", "<C-z>", ":earlier<CR>")
 vim.keymap.set("v", "<C-z>", ":earlier<CR>")
 
