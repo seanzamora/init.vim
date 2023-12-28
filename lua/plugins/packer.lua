@@ -45,26 +45,9 @@ return packer.startup(function(use)
     end
 
     -- LSP & Autocomplete
+   
+    use { "neovim/nvim-lspconfig" }
     use { "simrat39/inlay-hints.nvim" }
-    use {
-        "neovim/nvim-lspconfig",
-        opt = true,
-        event = { "BufReadPre" },
-        wants = {
-            "inlay-hints.nvim",
-        },
-        config = function()
-            require("config.lsp").setup()
-        end,
-        requires = {
-            {
-                "simrat39/inlay-hints.nvim",
-                config = function()
-                    require("inlay-hints").setup()
-                end,
-            },
-        },
-    }
 
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
@@ -78,11 +61,10 @@ return packer.startup(function(use)
 
     use { "L3MON4D3/LuaSnip" }
     use { "rafamadriz/friendly-snippets" }
-    use { "VonHeikemen/lsp-zero.nvim", branch = "v1.x" }
+    use { "VonHeikemen/lsp-zero.nvim" , branch = "v3.x", requires ={"neovim/nvim-lspconfig"} }
     use { "lvimuser/lsp-inlayhints.nvim" }
     use { "simrat39/rust-tools.nvim" }
     use { "mfussenegger/nvim-dap" }
-
 
     -- Visual
     use { "nvim-tree/nvim-web-devicons" }
