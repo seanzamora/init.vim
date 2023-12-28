@@ -7,7 +7,7 @@ lualine.setup {
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
-      statusline = {},
+      statusline = {'NvimTree'},
       winbar = {},
     },
     ignore_focus = {},
@@ -38,5 +38,8 @@ lualine.setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {},
+   disabled_filetypes = { 'packer', 'NvimTree' },
 }
+
+

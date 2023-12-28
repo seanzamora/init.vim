@@ -1,4 +1,5 @@
 require("plugins")
+require("snippets")
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
