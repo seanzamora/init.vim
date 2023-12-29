@@ -81,4 +81,5 @@ return packer.startup(function(use)
     use { "tpope/vim-fugitive" }
     use { "nvim-telescope/telescope.nvim" }
     use { "ojroques/nvim-osc52" }
+    use { "akinsho/toggleterm.nvim" }
 end)

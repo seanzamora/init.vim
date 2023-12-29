@@ -150,4 +150,15 @@ lspconfig.angularls.setup({
     capabilities = lsp_capabilities
 })
 
+lspconfig.csharp_ls.setup({
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.g.inlay_hint_visible = true
+            vim.lsp.inlay_hint(bufnr, true)
+            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+        end
+    end,
+    capabilities = lsp_capabilities
+})
+
 require("mason").setup()
