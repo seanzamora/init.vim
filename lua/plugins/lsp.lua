@@ -102,6 +102,7 @@ lspconfig.gopls.setup({
         end
     end,
     settings = {
+        experimentalWorkspaceModule = true,
         hints = {
             assignVariableTypes = true,
             compositeLiteralFields = true,
@@ -137,6 +138,7 @@ lspconfig.tailwindcss.setup({
     },
     capabilities = lsp_capabilities
 })
+
 lspconfig.angularls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
