@@ -1,5 +1,4 @@
 require("plugins")
-require("plugins")
 require("snippets")
 
 vim.g.mapleader = ' '
