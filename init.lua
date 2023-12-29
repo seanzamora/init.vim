@@ -31,3 +31,4 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set({ "n", "v" }, "<F9>", ":!%:p<CR>")
