@@ -82,4 +82,5 @@ return packer.startup(function(use)
     use { "nvim-telescope/telescope.nvim" }
     use { "ojroques/nvim-osc52" }
     use { "akinsho/toggleterm.nvim" }
+    use { "puremourning/vimspector" }
 end)

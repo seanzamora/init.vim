@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "vim",
-        "docker_client_toggle"
+        "docker_client_toggle",
+        "file_exists"
     ]
 }

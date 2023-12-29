@@ -37,6 +37,24 @@ lsp.setup()
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+lspconfig.rust_analyzer.setup({
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.g.inlay_hint_visible = true
+            vim.lsp.inlay_hint(bufnr, true)
+            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+        end
+    end,
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = false,
+            }
+        }
+    },
+    capabilities = lsp_capabilities
+})
+
 lspconfig.lua_ls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
