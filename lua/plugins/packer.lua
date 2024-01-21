@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
+print(fn.stdpath("data"))
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system({
         "git",
@@ -83,4 +83,5 @@ return packer.startup(function(use)
     use { "ojroques/nvim-osc52" }
     use { "akinsho/toggleterm.nvim" }
     use { "puremourning/vimspector" }
+    use { "yarchived/wowlua.vim" }
 end)

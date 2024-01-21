@@ -32,3 +32,4 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set({ "n", "v" }, "<F9>", ":!%:p<CR>")
+vim.opt_local.dictionary:append('/home/seanzamorea/.local/share/nvim/site/pack/packer/start/wowlua.vim/dict/wowlua.dict')
