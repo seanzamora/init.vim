@@ -159,9 +159,9 @@ lspconfig.tailwindcss.setup({
 local cmd = { "ngserver",
     "--stdio",
     "--tsProbeLocations",
-    "/home/seanzamora/.nvm/versions/node/v21.5.0/lib/node_modules/typescript/lib",
+    "/home/me/.nvm/versions/node/v21.5.0/lib/node_modules/typescript/lib",
     "--ngProbeLocations",
-    "/home/seanzamora/.nvm/versions/node/v21.5.0/lib/node_modules/@angular/language-server/lib",
+    "/home/me/.nvm/versions/node/v21.5.0/lib/node_modules/@angular/language-server/lib",
 }
 lspconfig.angularls.setup({
     cmd = cmd,
