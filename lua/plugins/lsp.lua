@@ -156,8 +156,18 @@ lspconfig.tailwindcss.setup({
     },
     capabilities = lsp_capabilities
 })
-
+local cmd = { "ngserver",
+    "--stdio",
+    "--tsProbeLocations",
+    "/home/seanzamora/.nvm/versions/node/v21.5.0/lib/node_modules/typescript/lib",
+    "--ngProbeLocations",
+    "/home/seanzamora/.nvm/versions/node/v21.5.0/lib/node_modules/@angular/language-server/lib",
+}
 lspconfig.angularls.setup({
+    cmd = cmd,
+    on_new_config = function(new_config, new_root_dir)
+        new_config.cmd = cmd
+    end,
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
