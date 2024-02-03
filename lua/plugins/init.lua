@@ -11,8 +11,4 @@ require("plugins.telescope")
 require("plugins.lspsaga")
 require("plugins.clipboard")
 require("plugins.lazydocker")
-<<<<<<< HEAD
 -- require("plugins.vimspector")
-=======
---require("plugins.vimspector")
->>>>>>> d405522 (Updated)
