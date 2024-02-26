@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-print(fn.stdpath("data"))
+-- print(install_path)
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system({
         "git",
@@ -66,7 +66,7 @@ return packer.startup(function(use)
     use { "mfussenegger/nvim-dap" }
     use { "glepnir/lspsaga.nvim", after = 'nvim-lspconfig', config = function() require('lspsaga').setup({}) end }
 
-
+    use { "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }
     -- Visual
     use { "nvim-tree/nvim-web-devicons" }
     use { "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }
@@ -80,6 +80,10 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use { "tpope/vim-fugitive" }
     use { "nvim-telescope/telescope.nvim" }
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
     use { "ojroques/nvim-osc52" }
     use { "akinsho/toggleterm.nvim" }
     use { "puremourning/vimspector" }

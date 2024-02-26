@@ -24,12 +24,13 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", ";d", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    -- vim.keymap.set("n", ";z", function() vi--[[ m. ]]lsp.diagnostic.show_line_diagnostics() end, opts)
 end)
 
 lsp.setup()
@@ -47,6 +48,14 @@ lspconfig.rust_analyzer.setup({
     end,
     settings = {
         ['rust-analyzer'] = {
+            cargo = {
+                buildScripts = {
+                    enable = true
+                }
+            },
+            checkOnSave = {
+                command = "clippy"
+            },
             diagnostics = {
                 enable = false,
             }
@@ -135,34 +144,35 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.tailwindcss.setup({
-    on_attach = function(client, bufnr)
-        if client.server_capabilities.inlayHintProvider then
-            vim.g.inlay_hint_visible = true
-            vim.lsp.inlay_hint(bufnr, true)
-            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
-        end
-    end,
-    settings = {
-        classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-        lint = {
-            cssConflict = "warning",
-            invalidApply = "error",
-            invalidConfigPath = "error",
-            invalidScreen = "error",
-            invalidTailwindDirective = "error",
-            invalidVariant = "error",
-            recommendedVariantOrder = "warning"
-        },
-        validate = true
-    },
-    capabilities = lsp_capabilities
+    -- cmd = { "tailwindcss-language-server", "--stdio" },
+    -- on_attach = function(client, bufnr)
+    --     if client.server_capabilities.inlayHintProvider then
+    --         vim.g.inlay_hint_visible = true
+    --         vim.lsp.inlay_hint(bufnr, true)
+    --         vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+    --     end
+    -- end,
+    -- settings = {
+    --     classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+    --     lint = {
+    --         cssConflict = "warning",
+    --         invalidApply = "error",
+    --         invalidConfigPath = "error",
+    --         invalidScreen = "error",
+    --         invalidTailwindDirective = "error",
+    --         invalidVariant = "error",
+    --         recommendedVariantOrder = "warning"
+    --     },
+    --     validate = true
+    -- },
+    -- capabilities = lsp_capabilities
 })
 local cmd = { "ngserver",
     "--stdio",
     "--tsProbeLocations",
-    "/home/me/.nvm/versions/node/v21.5.0/lib/node_modules/typescript/lib",
+    "/home/me/.nvm/versions/node/v20.11.0/lib/node_modules/typescript/lib",
     "--ngProbeLocations",
-    "/home/me/.nvm/versions/node/v21.5.0/lib/node_modules/@angular/language-server/lib",
+    "/home/me/.nvm/versions/node/v20.11.0/lib/node_modules/@angular/language-server/lib",
 }
 lspconfig.angularls.setup({
     cmd = cmd,
@@ -176,10 +186,6 @@ lspconfig.angularls.setup({
             vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
         end
     end,
-    on_new_config = function(new_config, new_root_dir)
-        new_config.cmd = cmd
-    end,
-
     capabilities = lsp_capabilities
 })
 
