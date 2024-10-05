@@ -52,7 +52,7 @@ require('rose-pine').setup({
         Search = { bg = 'love', inherit = false },
     },
     styles = {
-        transparency = true
+        -- transparency = true
     }
 })
 

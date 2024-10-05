@@ -30,7 +30,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    -- vim.keymap.set("n", ";z", function() vi--[[ m. ]]lsp.diagnostic.show_line_diagnostics() end, opts)
+    vim.keymap.set("n", ";z", function() vim.lsp.diagnostic.show_line_diagnostics() end, opts)
 end)
 
 lsp.setup()
@@ -190,6 +190,18 @@ lspconfig.angularls.setup({
 })
 
 lspconfig.csharp_ls.setup({
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.g.inlay_hint_visible = true
+            vim.lsp.inlay_hint(bufnr, true)
+            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+        end
+    end,
+    capabilities = lsp_capabilities
+})
+
+
+lspconfig.clangd.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true

@@ -32,12 +32,12 @@ vim.keymap.set('n', ';q', function() t.toggle('quickfix') end)
 vim.keymap.set('n', ';p', function() t.toggle('lsp_references') end)
 
 -- vim.keymap.set('n', '<C-n>', ':Telescope file_browser<CR>', { noremap = true, silent = true })
-vim.keymap.set(
-    "n",
-    "<C-n>",
-    ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-    { noremap = true }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<C-n>",
+--     ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+--     { noremap = true }
+-- )
 
 -- vim.keymap.set('n', 'C-n', function() builtin.help_tags() end)
 vim.keymap.set('n', ';;', function() builtin.resume() end)

@@ -71,7 +71,9 @@ return packer.startup(function(use)
     use { "nvim-tree/nvim-web-devicons" }
     use { "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }
     use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons", opt = true } }
-    use { "rose-pine/neovim", as = "rose-pine" }
+    -- use { "rose-pine/neovim", as = "rose-pine" }
+    -- use { "lunarvim/synthwave84.nvim" }
+    use { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} }
 
     -- Utils
     use { "nvim-lua/plenary.nvim" }

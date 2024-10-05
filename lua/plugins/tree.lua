@@ -19,19 +19,19 @@ local function my_on_attach(bufnr)
 end
 
 -- OR setup with some options
--- require("nvim-tree").setup({
---     on_attach = my_on_attach,
---     sort = {
---         sorter = "case_sensitive",
---     },
---     view = {
---         width = 40,
---     },
---     renderer = {
---         group_empty = true,
---     },
---     filters = {
---         dotfiles = true,
---     },
--- })
---
+require("nvim-tree").setup({
+    on_attach = my_on_attach,
+    sort = {
+        sorter = "case_sensitive",
+    },
+    view = {
+        width = 40,
+        side = "right"
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
+})
