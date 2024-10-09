@@ -52,9 +52,10 @@ require('rose-pine').setup({
         Search = { bg = 'love', inherit = false },
     },
     styles = {
-        -- transparency = true
+        transparency = true
     }
 })
 
 -- Set colorscheme after options
 vim.cmd('colorscheme rose-pine')
+vim.opt.pumblend = 0

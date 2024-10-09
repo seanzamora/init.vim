@@ -68,8 +68,9 @@ lspconfig.lua_ls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
-            vim.lsp.buf.inlay_hint(bufnr, true)
+            -- vim.lsp.buf.inlay_hint(bufnr, true)
             vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+            require('lsp-format').on_attach(client, bufnr)
         end
     end,
     settings = {
@@ -85,7 +86,7 @@ lspconfig.lua_ls.setup({
     capabilities = lsp_capabilities
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
@@ -182,8 +183,9 @@ lspconfig.angularls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
-            vim.lsp.inlay_hint(bufnr, true)
-            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+            -- vim.lsp.inlay_hint(bufnr, true)
+            -- vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+            require('lsp-format').on_attach(client, bufnr)
         end
     end,
     capabilities = lsp_capabilities
@@ -205,8 +207,7 @@ lspconfig.clangd.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
             vim.g.inlay_hint_visible = true
-            vim.lsp.inlay_hint(bufnr, true)
-            vim.api.nvim_set_hl(bufnr, 'LspInlayHint', { fg = 'red' })
+            -- vim.lsp.inlay_hint(bufnr, true)
         end
     end,
     capabilities = lsp_capabilities

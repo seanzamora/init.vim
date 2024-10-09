@@ -71,8 +71,7 @@ return packer.startup(function(use)
     use { "nvim-tree/nvim-web-devicons" }
     use { "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }
     use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons", opt = true } }
-    -- use { "rose-pine/neovim", as = "rose-pine" }
-    -- use { "lunarvim/synthwave84.nvim" }
+    use { "rose-pine/neovim", as = "rose-pine" }
     use { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} }
 
     -- Utils
@@ -88,6 +87,36 @@ return packer.startup(function(use)
     }
     use { "ojroques/nvim-osc52" }
     use { "akinsho/toggleterm.nvim" }
-    use { "puremourning/vimspector" }
     use { "yarchived/wowlua.vim" }
+    use { "lukas-reineke/lsp-format.nvim" }
+    use { "tris203/precognition.nvim",
+        event  = "VeryLazy",
+        opts   = {
+            startVisible = true,
+            showBlankVirtLine = true,
+            highlightColor = { link = "Comment" },
+            hints = {
+                Caret = { text = "^", prio = 2 },
+                Dollar = { text = "$", prio = 1 },
+                MatchingPair = { text = "%", prio = 5 },
+                Zero = { text = "0", prio = 1 },
+                w = { text = "w", prio = 10 },
+                b = { text = "b", prio = 9 },
+                e = { text = "e", prio = 8 },
+                W = { text = "W", prio = 7 },
+                B = { text = "B", prio = 6 },
+                E = { text = "E", prio = 5 },
+            },
+            gutterHints = {
+                G = { text = "G", prio = 10 },
+                gg = { text = "gg", prio = 9 },
+                PrevParagraph = { text = "{", prio = 8 },
+                NextParagraph = { text = "}", prio = 8 },
+            },
+            disabled_fts = {
+                "startify",
+            },
+        },
+        config = function() require("precognition").toggle() end
+    }
 end)

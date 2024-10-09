@@ -1,7 +1,6 @@
 require("plugins.packer")
 require("plugins.tree")
--- require("plugins.tokyonight")
--- require("plugins.synthwave")
+--require("plugins.synthwave")
 require("plugins.rosepine")
 require("plugins.harpoon")
 require("plugins.comment")
