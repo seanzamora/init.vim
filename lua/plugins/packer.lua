@@ -88,13 +88,12 @@ return packer.startup(function(use)
     use { "ojroques/nvim-osc52" }
     use { "akinsho/toggleterm.nvim" }
     use { "yarchived/wowlua.vim" }
-    use { "lukas-reineke/lsp-format.nvim" }
     use { "tris203/precognition.nvim",
-        event  = "VeryLazy",
-        opts   = {
+        event = "VeryLazy",
+        opts  = {
             startVisible = true,
             showBlankVirtLine = true,
-            highlightColor = { link = "Comment" },
+            highlightColor = { link = "VertSplit" },
             hints = {
                 Caret = { text = "^", prio = 2 },
                 Dollar = { text = "$", prio = 1 },
@@ -116,7 +115,25 @@ return packer.startup(function(use)
             disabled_fts = {
                 "startify",
             },
+        }
+    }
+    use { "lukas-reineke/lsp-format.nvim" }
+
+    use {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
         },
-        config = function() require("precognition").toggle() end
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
     }
 end)

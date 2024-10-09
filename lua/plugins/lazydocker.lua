@@ -33,7 +33,7 @@ local docker_client = Terminal:new {
     cmd = docker_tui,
     dir = "git_dir",
     hidden = true,
-    direction = "float",
+    direction = "horizontal",
     float_opts = {
         border = "double",
     },
@@ -46,7 +46,7 @@ end)
 
 local terminal_client = Terminal:new {
     hidden = true,
-    direction = "float",
+    direction = "horizontal",
     float_opts = {
         border = "double",
     },
